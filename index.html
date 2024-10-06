@@ -7,56 +7,58 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
 
-    <!-- Navigation Tabs -->
-    <ul class="tabs">
-        <li><a href="#search">Search Reviews</a></li>
-        <li><a href="#predict">Predict Sentiment</a></li>
-    </ul>
+        <!-- Navigation Tabs -->
+        <ul class="tabs">
+            <li><a href="#search">Search Reviews</a></li>
+            <li><a href="#predict">Predict Sentiment</a></li>
+        </ul>
 
-    <!-- Tab 1: Search Reviews -->
-    <div id="search">
-        <h2>Search Product Reviews</h2>
-        <form method="POST" action="/">
-            <label for="keyword">Keyword:</label>
-            <input type="text" id="keyword" name="keyword" required>
-            
-            <label for="sentiment">Sentiment:</label>
-            <select id="sentiment" name="sentiment">
-                <option value="">All</option>
-                <option value="positive">Positive</option>
-                <option value="negative">Negative</option>
-                <option value="neutral">Neutral</option>
-            </select>
-            
-            <button type="submit">Search</button>
-        </form>
+        <!-- Tab 1: Search Reviews -->
+        <div id="search">
+            <h2>Search Product Reviews</h2>
+            <form method="POST" action="/">
+                <label for="keyword">Keyword:</label>
+                <input type="text" id="keyword" name="keyword" required>
+                
+                <label for="sentiment">Sentiment:</label>
+                <select id="sentiment" name="sentiment">
+                    <option value="">All</option>
+                    <option value="positive">Positive</option>
+                    <option value="negative">Negative</option>
+                    <option value="neutral">Neutral</option>
+                </select>
+                
+                <button type="submit">Search</button>
+            </form>
 
-        <h2>Results:</h2>
-        <div>
-            {% if tables %}
-                {% for table in tables %}
-                    {{ table|safe }}
-                {% endfor %}
-            {% else %}
-                <p>No results found</p>
+            <h2>Results:</h2>
+            <div>
+                {% if tables %}
+                    {% for table in tables %}
+                        {{ table|safe }}
+                    {% endfor %}
+                {% else %}
+                    <p>No results found</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Tab 2: Predict Sentiment -->
+        <div id="predict">
+            <h2>Predict Sentiment of Your Input</h2>
+            <form method="POST" action="/predict">
+                <label for="user_input">Enter Text:</label>
+                <textarea id="user_input" name="user_input" rows="4" cols="50" required></textarea>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if sentiment %}
+                <h3>Predicted Sentiment: {{ sentiment }}</h3>
             {% endif %}
         </div>
-    </div>
-
-    <!-- Tab 2: Predict Sentiment -->
-    <div id="predict">
-        <h2>Predict Sentiment of Your Input</h2>
-        <form method="POST" action="/predict">
-            <label for="user_input">Enter Text:</label>
-            <textarea id="user_input" name="user_input" rows="4" cols="50" required></textarea>
-            <button type="submit">Predict</button>
-        </form>
-
-        {% if sentiment %}
-            <h3>Predicted Sentiment: {{ sentiment }}</h3>
-        {% endif %}
     </div>
 
     <script>
