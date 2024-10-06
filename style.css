@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input, select, textarea, button {
+    margin: 5px;
+    padding: 8px;
+}
+
+.tabs {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.tabs li {
+    margin-right: 10px;
+}
+
+.tabs li a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.tabs li a:hover {
+    background-color: #ddd;
+}
+
+[data-tab] {
+    display: none;
+}
