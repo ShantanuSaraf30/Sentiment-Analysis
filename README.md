@@ -8,6 +8,12 @@ A brief description of what your project does and why it is useful.
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
+## Screenshots
+
+### Screenshot 1: Main Page
+![Screenshot 1](/homepage.png)
+
+
 
 ## Installation
 
